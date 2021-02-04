@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="../Javascript/homePage.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+<link href="../CSS/myCss.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Page</title>
+</head>
+<body>
+	<!--Welcome the user who is logged in either with usrename or his fname-->
+	<h1 id="welcomeh1" onload="getName()">Welcome (name)</h1>
+	<br><br>
+	<!--Here in big bold letters any notifications for the logged in user-->
+	<div id=notificationsGoHere></div>
+	<div class="card btn-groupV">
+		<!--Open new Reimbursements-->
+		<input type="button" class="buttonV" value="New Reimbursements"
+			id="newReimbursement"
+			onclick="document.location='newReimbursements.html'">
+		<!--View open and past Reimbursements requests-->
+		<input type="button" class="buttonV" id="viewReimbursements"
+			value="View Reimbursements"
+			onclick="document.location='viewReimbursements.html'">
+		<!--View pending Reimbursements user needs approve/deny-->
+		<input type="button" class="buttonV" id="viewPending"
+			value="View Incoming Reimbursement Requests"
+			onclick="document.location='pendingReimbursements.html'">
+		<!--Logout-->
+		<input type="button" class="buttonV" value="Log out" id="logout"
+			onclick="logOut()">
+	</div>
+</body>
+</html>
