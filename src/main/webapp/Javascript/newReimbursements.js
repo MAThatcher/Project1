@@ -1,10 +1,10 @@
-function loadMe(){
+function loadMe() {
 	getEventTypes();
 	getAvailableFunds()
 }
 window.onload = loadMe();
 
-function getAvailableFunds(){
+function getAvailableFunds() {
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = () => {
@@ -20,9 +20,9 @@ function getAvailableFunds(){
 	xhttp.setRequestHeader('Content-Type', 'application/json');
 	xhttp.send();
 }
-function getEventTypes(){
+function getEventTypes() {
 	let xhttp = new XMLHttpRequest();
-	let employee;	
+	let employee;
 	let eventTypes;
 	xhttp.onreadystatechange = () => {
 
@@ -31,18 +31,18 @@ function getEventTypes(){
 			let formLocation = document.getElementById("eventTypeTd");
 
 			let newInnerHtml = "<table>";
-			for (var i = 0 ; i < eventTypes.length; i++){
+			for (var i = 0; i < eventTypes.length; i++) {
 				newInnerHtml += `<tr><td style="width:50%;"><p style="text-align: right;"> ${eventTypes[i].name}</p></td><td style="width:50%; text-align:left;"><input type="radio" id="eventType${i}" name="eventType" value="${eventTypes[i].name}" checked></td></tr>`
 			}
 			newInnerHtml += "</table>"
-			
+
 			formLocation.innerHTML = newInnerHtml;
 
 			//add event listeners
-			var inputs=document.querySelectorAll("input[type=radio]")
+			var inputs = document.querySelectorAll("input[type=radio]")
 			var x = inputs.length;
-			while(x--){
-				inputs[x].addEventListener("change",function(){
+			while (x--) {
+				inputs[x].addEventListener("change", function() {
 					let index = this.id;
 					let lastChar = index.substr(index.length - 1);
 					let costinput = document.getElementById("cost");
@@ -50,12 +50,12 @@ function getEventTypes(){
 					let num = eventTypes[lastChar].coverage * costinput.value * 0.01;
 					let availablefunds = document.getElementById("funds").innerHTML;
 					let availablefundsOut = availablefunds.substr(1);
-					if (availablefundsOut < num){
+					if (availablefundsOut < num) {
 						num = availablefundsOut;
 					}
 					// TODO Fix num to show only 2 decimal places
 					projectedValue.innerHTML = `$${num}`
-				},0);
+				}, 0);
 			}
 
 			// let inputCost = document.getElementById("cost");
@@ -90,7 +90,7 @@ function submitRequest() {
 	createEvent();
 }
 
-function createEvent(){
+function createEvent() {
 	let name = document.getElementById("name").value;
 	let date = document.getElementById("date").value;
 	let location = document.getElementById("location").value;
@@ -99,8 +99,8 @@ function createEvent(){
 
 	let eventTypeId = 0;
 	let e = document.getElementsByName("eventType");
-	for (var i = 0 ; i < e.length ; i++){
-		if (e[i].checked){
+	for (var i = 0; i < e.length; i++) {
+		if (e[i].checked) {
 			let index = e[i].id;
 			let lastChar = index.substr(index.length - 1);
 			let idOfEventType = lastChar - 1 + 2;
@@ -135,7 +135,7 @@ function createEvent(){
 	xhttp.send(JSON.stringify(newEvent));
 }
 
-function createRequest(inEventId){
+function createRequest(inEventId) {
 	let timeMissed = document.getElementById("timeMissed").value;
 	let justification = document.getElementById("justification").value;
 	let attachedApproval = document.getElementById("attachedApproval").value;
@@ -146,7 +146,7 @@ function createRequest(inEventId){
 		justification,
 		attachedApproval,
 		amount,
-		eventId:inEventId
+		eventId: inEventId
 	}
 	let xhttp = new XMLHttpRequest();
 

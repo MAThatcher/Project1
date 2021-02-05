@@ -1,4 +1,4 @@
-function loadMe(){
+function loadMe() {
 	getName();
 	getNotifications();
 }
@@ -18,23 +18,23 @@ function getName() {
 	xhttp.setRequestHeader('Content-Type', 'application/json');
 	xhttp.send();
 }
-function getNotifications(){
+function getNotifications() {
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = () => {
 
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			input = JSON.parse(xhttp.responseText);
-			if (input.length > 0){
+			if (input.length > 0) {
 				let div = document.getElementById("notificationsGoHere");
 				let output = `<div class=card><h3>Notifications</h3>`;
-				for (let i = 0 ; i < input.length ; i++){
-					output+= `<p>${i+1}- ${input[i].body}</p>`;
+				for (let i = 0; i < input.length; i++) {
+					output += `<p>${i + 1}- ${input[i].body}</p>`;
 				}
-				output+= `</div><br><br>`
+				output += `</div><br><br>`
 				div.innerHTML = output;
 			}
-			
-			
+
+
 		}
 	}
 

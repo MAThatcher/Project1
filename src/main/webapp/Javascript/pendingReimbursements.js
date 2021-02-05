@@ -5,37 +5,37 @@ function loadMe() {
 	xhttp.onreadystatechange = () => {
 
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
-            input = JSON.parse(xhttp.responseText);
-            forms = input;
+			input = JSON.parse(xhttp.responseText);
+			forms = input;
 			for (let i = 0; i < input.length; i++) {
-                //Begin to format a table
-                let output = document.getElementById("requests");
-                let state = "";
-                var notes = input[i].requestNotes;
+				//Begin to format a table
+				let output = document.getElementById("requests");
+				let state = "";
+				var notes = input[i].requestNotes;
 				switch (input[i].state) {
 					case "1":
-                        state = "Pending supervisor approval";
+						state = "Pending supervisor approval";
 						break;
 					case "2":
-                        state = "Pending Department Head approval";
+						state = "Pending Department Head approval";
 						break;
 					case "3":
-                        state = "Pending Benco approval";
+						state = "Pending Benco approval";
 						break;
 					case "4":
-                        state = "Request Approved";
+						state = "Request Approved";
 						break;
 					case "5":
-                        state = "Request Denied";
-                        break;
-                    case "6":
-                        state = "Request Canceled by Owner";
-                        break;
-                    case "7":
-                        state = "Approved pending passing Grade";
+						state = "Request Denied";
+						break;
+					case "6":
+						state = "Request Canceled by Owner";
+						break;
+					case "7":
+						state = "Approved pending passing Grade";
 						break;
 					default:
-                        state = "ERROR";
+						state = "ERROR";
 						break;
 				}
 				let outputHtml = output.innerHTML;
@@ -63,37 +63,37 @@ function loadMe() {
                                     <td>Type of Event</td>
                                     <td>${input[i].eventType}</td>
                                 </tr>`;
-                outputHtml += `<tr>
+				outputHtml += `<tr>
                                     <td>Date of the Event</td>
                                     <td>${input[i].dateOfEvent}</td>
-                                </tr>`;      
-                outputHtml += `<tr>
+                                </tr>`;
+				outputHtml += `<tr>
                                     <td>Location of Event</td>
                                     <td>${input[i].location}</td>
                                 </tr>`;
-                outputHtml += `<tr>
+				outputHtml += `<tr>
                                     <td>Event Related Attachments</td>
                                     <td>${input[i].relatedAttachments}</td>
-                                </tr>`;  
-                outputHtml += `<tr>
+                                </tr>`;
+				outputHtml += `<tr>
                                     <td>Justification</td>
                                     <td>${input[i].justification}</td>
-                                </tr>`;        
-                outputHtml += `<tr>
+                                </tr>`;
+				outputHtml += `<tr>
                                     <td>Days of work to be missed</td>
                                     <td>${input[i].workMissed}</td>
                                 </tr>`;
-                if (notes != null || notes.length == 0){
-                    for (let j = 0 ; j < notes.length ; j++){
-                        outputHtml += `<tr>
+				if (notes != null || notes.length == 0) {
+					for (let j = 0; j < notes.length; j++) {
+						outputHtml += `<tr>
                                             <td>Note</td>
                                             <td>${notes[j]}</td>
                                         </tr>`;
-                    }
-                }
-                //add another loop for notes for the request
-                outputHtml += `</table><div class="brn-groupH"><input type="button" class="buttonH" onclick="approve(${i})" value="Approve Request"><input type="button" class="buttonH" onclick="deny(${i})" value="Deny Request"><input type="button" class="buttonH" onclick="requestMoreInfo(${i})" value="Request More information"></div>`
-                output.innerHTML = outputHtml;
+					}
+				}
+				//add another loop for notes for the request
+				outputHtml += `</table><div class="brn-groupH"><input type="button" class="buttonH" onclick="approve(${i})" value="Approve Request"><input type="button" class="buttonH" onclick="deny(${i})" value="Deny Request"><input type="button" class="buttonH" onclick="requestMoreInfo(${i})" value="Request More information"></div>`
+				output.innerHTML = outputHtml;
 			}
 		}
 	}
@@ -104,70 +104,70 @@ function loadMe() {
 };
 window.onload = loadMe();
 
-function approve(index){
-    let idOfRt = forms[index].idOfRt;
-    let sent = {
-        "id" : idOfRt
-    }
-    let xhttp = new XMLHttpRequest();
+function approve(index) {
+	let idOfRt = forms[index].idOfRt;
+	let sent = {
+		"id": idOfRt
+	}
+	let xhttp = new XMLHttpRequest();
 
-        xhttp.onreadystatechange = () => {
+	xhttp.onreadystatechange = () => {
 
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                window.location.replace("http://localhost:8080/Project1/HTML/pendingReimbursements.html");
-            }
-        }
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			window.location.replace("http://localhost:8080/Project1/HTML/pendingReimbursements.html");
+		}
+	}
 
-        xhttp.open("POST", "http://localhost:8080/Project1/approve.do", true);
-        xhttp.send(JSON.stringify(sent));
+	xhttp.open("POST", "http://localhost:8080/Project1/approve.do", true);
+	xhttp.send(JSON.stringify(sent));
 }
 
-function deny(index){
+function deny(index) {
 
-    let response = prompt("Please enter a reason to deny this request form");
-    if (response == null || response == ""){
+	let response = prompt("Please enter a reason to deny this request form");
+	if (response == null || response == "") {
 
-    }else{
-        let idOfRt = forms[index].idOfRt;
-        let sent = {
-        "id" : idOfRt,
-        "date" : response
-        }
-        let xhttp = new XMLHttpRequest();
+	} else {
+		let idOfRt = forms[index].idOfRt;
+		let sent = {
+			"id": idOfRt,
+			"date": response
+		}
+		let xhttp = new XMLHttpRequest();
 
-        xhttp.onreadystatechange = () => {
+		xhttp.onreadystatechange = () => {
 
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                window.location.replace("http://localhost:8080/Project1/HTML/pendingReimbursements.html");
-            }
-        }
+			if (xhttp.readyState == 4 && xhttp.status == 200) {
+				window.location.replace("http://localhost:8080/Project1/HTML/pendingReimbursements.html");
+			}
+		}
 
-        xhttp.open("POST", "http://localhost:8080/Project1/deny.do", true);
-        xhttp.send(JSON.stringify(sent));
-    }
+		xhttp.open("POST", "http://localhost:8080/Project1/deny.do", true);
+		xhttp.send(JSON.stringify(sent));
+	}
 }
 
-function requestMoreInfo(index){
-    let response = prompt(`What mote information do you need from ${forms[index].employeeName}`);
-    if (response == null || response == ""){
+function requestMoreInfo(index) {
+	let response = prompt(`What mote information do you need from ${forms[index].employeeName}`);
+	if (response == null || response == "") {
 
-    }else{
-        let idOfRt = forms[index].idOfRt;
-        let note = {
-        "id" : 0,
-        "body" : response,
-        "requestId" : idOfRt
-        }
-        let xhttp = new XMLHttpRequest();
+	} else {
+		let idOfRt = forms[index].idOfRt;
+		let note = {
+			"id": 0,
+			"body": response,
+			"requestId": idOfRt
+		}
+		let xhttp = new XMLHttpRequest();
 
-        xhttp.onreadystatechange = () => {
+		xhttp.onreadystatechange = () => {
 
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                window.location.replace("http://localhost:8080/Project1/HTML/pendingReimbursements.html");
-            }
-        }
+			if (xhttp.readyState == 4 && xhttp.status == 200) {
+				window.location.replace("http://localhost:8080/Project1/HTML/pendingReimbursements.html");
+			}
+		}
 
-        xhttp.open("POST", "http://localhost:8080/Project1/addNote.do", true);
-        xhttp.send(JSON.stringify(note));
-    }
+		xhttp.open("POST", "http://localhost:8080/Project1/addNote.do", true);
+		xhttp.send(JSON.stringify(note));
+	}
 }

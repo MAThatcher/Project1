@@ -29,7 +29,7 @@ public class LoginStepImpl {
 	public void the_employee_clicks_on_log_in() throws InterruptedException {
 		Thread.sleep(1500);
 		loginPage.loginButton.click();
-		Thread.sleep(9500);
+		Thread.sleep(1500);
 	}
 	@Then("^The employee should be on his Home Page$")
 	public void the_employee_should_be_on_his_Home_Page() {
