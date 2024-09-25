@@ -131,12 +131,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
 		for (int i = 0; i < 10; i++) {
 			// ...
 			if (1==2) i++; // Noncompliant, i is updated from within body
 			// ...
 		  }
+		return null;
 	}
 
 	
