@@ -108,11 +108,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		for (int i = 0; i < 10; i++) {
-			// ...
-			if (1==2) i++; // Noncompliant, i is updated from within body
-			// ...
-		  }
 		try {
 			String sql = "SELECT * FROM employees";
 			PreparedStatement ps = conn.prepareStatement(sql);
