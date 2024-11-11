@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 //this is a test
+//this is a test2
 public class JDBCconnection {
 	private static Connection conn = null;
 
@@ -28,6 +29,10 @@ public class JDBCconnection {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		for (int i = 0; i < 10; ) { // Noncompliant, i not updated in increment clause
+			// ...
+			i++;
+		  }
 		return null;
 	}
 }
