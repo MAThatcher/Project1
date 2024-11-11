@@ -1,4 +1,5 @@
 package dev.thatcher.util;
+import java.util.logging.Logger;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -33,7 +34,7 @@ public class JDBCconnection {
 			// ...
 			i++;
 		  }
-		  System.out.println("hello world");
-		return null;
+		  logger.info("My Message");  // Compliant, output via logger
+		  return null;
 	}
 }
