@@ -1,6 +1,6 @@
 package dev.thatcher.util;
-import java.util.logging.Logger;
 
+import java.util.logging.Logger;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +8,8 @@ import java.util.Properties;
 //this is a test
 //this is a test2
 public class JDBCconnection {
+	Logger logger = Logger.getLogger(getClass().getName());
+
 	private static Connection conn = null;
 
 	public static void main(String[] args) {
