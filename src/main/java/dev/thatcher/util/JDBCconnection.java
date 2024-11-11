@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
-
+//this is a test
 public class JDBCconnection {
 	private static Connection conn = null;
 
