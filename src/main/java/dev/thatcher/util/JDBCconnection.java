@@ -12,7 +12,7 @@ public class JDBCconnection {
 		Connection con1 = getConnection();
 		System.out.println(con1);
 	}
-
+//this is another comment
 	public static Connection getConnection() {
 		try {
 			if (conn == null) {
@@ -27,6 +27,9 @@ public class JDBCconnection {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		for (int i = 0; i < 10; i++){
+			System.out.println("test"+i);
 		}
 		return null;
 	}
