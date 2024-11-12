@@ -8,7 +8,6 @@ import java.util.Properties;
 //this is a test
 //this is a test2
 public class JDBCconnection {
-	Logger logger = Logger.getLogger(getClass().getName());
 
 	private static Connection conn = null;
 
@@ -36,6 +35,8 @@ public class JDBCconnection {
 			// ...
 			i++;
 		  }
+			Logger logger = Logger.getLogger(getClass().getName());
+
 		  logger.info("My Message");  // Compliant, output via logger
 		  return null;
 	}
