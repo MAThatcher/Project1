@@ -1,6 +1,5 @@
 package dev.thatcher.util;
 
-import java.util.logging.Logger;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,11 +32,7 @@ public class JDBCconnection {
 		}
 		for (int i = 0; i < 10; ) { // Noncompliant, i not updated in increment clause
 			// ...
-			i++;
-		  }
-			Logger logger = Logger.getLogger(getClass().getName());
-
-		  logger.info("My Message");  // Compliant, output via logger
+			i++;=
 		  return null;
 	}
 }
