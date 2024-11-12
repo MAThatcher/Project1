@@ -7,6 +7,7 @@ import java.util.Properties;
 //this is a test
 //this is a test2
 public class JDBCconnection {
+
 	private static Connection conn = null;
 
 	public static void main(String[] args) {
@@ -31,8 +32,7 @@ public class JDBCconnection {
 		}
 		for (int i = 0; i < 10; ) { // Noncompliant, i not updated in increment clause
 			// ...
-			i++;
-		  }
-		return null;
+			i++;=
+		  return null;
 	}
 }
